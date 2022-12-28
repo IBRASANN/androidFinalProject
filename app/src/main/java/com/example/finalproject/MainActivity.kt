@@ -1,9 +1,15 @@
 package com.example.finalproject
 
+import android.content.*
+import android.content.ContentValues
 import android.os.Bundle
+import android.provider.SyncStateContract.Helpers.insert
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -13,10 +19,38 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.finalproject.databinding.ActivityMainBinding
 import com.example.finalproject.ui.LoginFragment
 import com.example.finalproject.ui.RateFragment
+import com.example.finalproject.ui.UsersProvider
+
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    fun onClickAddName(view: View) {
+        // Add a new student record
+        val values = ContentValues()
+        values.put(
+            UsersProvider.NAME,
+            (view.findViewById<View>(R.id.txtUsername) as EditText).text.toString()
+        )
+        values.put(
+            UsersProvider.ADDRESS,
+            (view.findViewById<View>(R.id.txtAddress) as EditText).text.toString()
+        )
+        values.put(
+            UsersProvider.PHONE,
+            (view.findViewById<View>(R.id.txtPhone) as EditText).text.toString()
+        )
+        values.put(
+            UsersProvider.PASSWORD,
+            (view.findViewById<View>(R.id.txtPassword) as EditText).text.toString()
+        )
+        val uri = ContentResolver.insert(
+            UsersProvider.CONTENT_URI, values
+        )
+        Toast.makeText(baseContext, uri.toString(), Toast.LENGTH_LONG).show()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

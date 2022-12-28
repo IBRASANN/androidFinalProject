@@ -55,14 +55,14 @@
                     tools:ignore="ImageContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/txtQty2"
                     android:layout_below="@+id/img2"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginTop="12dp"
-                    android:text="book1"
+                    android:text="book2"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -79,9 +79,11 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
                     android:ems="10"
+                    android:enabled="false"
                     android:inputType="number"
+                    android:text="0"
                     app:layout_constraintStart_toEndOf="@+id/btnMin2"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/tvName"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 <Button
@@ -98,7 +100,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.058"
                     app:layout_constraintStart_toEndOf="@+id/txtQty2"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/tvName"
                     tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
                 <Button
@@ -111,7 +113,7 @@
                     android:layout_marginTop="16dp"
                     android:text="-"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/tvName"
                     tools:ignore="TouchTargetSizeCheck" />
 
 
@@ -181,7 +183,9 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
                     android:ems="10"
+                    android:enabled="false"
                     android:inputType="number"
+                    android:text="0"
                     app:layout_constraintStart_toEndOf="@+id/btnMin"
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -263,7 +267,7 @@
                     android:layout_below="@+id/img3"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginTop="12dp"
-                    android:text="book1"
+                    android:text="book3"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -280,7 +284,9 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
                     android:ems="10"
+                    android:enabled="false"
                     android:inputType="number"
+                    android:text="0"
                     app:layout_constraintStart_toEndOf="@+id/btnMin3"
                     app:layout_constraintTop_toBottomOf="@+id/textView4"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -327,13 +333,41 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="100dp"
-            android:layout_marginBottom="30dp"
             android:text="proceed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+        <TextView
+            android:id="@+id/tvThanks"
+            android:layout_width="245dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="110dp"
+            android:text="order has been placed! thank you!!"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnProceed" />
+
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="110dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="187dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="188dp"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView3"
-            app:layout_constraintVertical_bias="0.046" />
+            app:layout_constraintTop_toBottomOf="@+id/tvThanks"
+            app:layout_constraintVertical_bias="0.062" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

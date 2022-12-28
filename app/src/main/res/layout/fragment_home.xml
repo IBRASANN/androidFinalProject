@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="-2dp"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:fillViewport="true">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="-2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:isScrollContainer="true"
         android:scrollbars="vertical"
         android:verticalScrollbarPosition="defaultPosition"
@@ -21,12 +20,11 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="411dp"
-            android:layout_height="235dp"
+            android:layout_width="0dp"
+            android:layout_height="236dp"
             android:layout_marginTop="32dp"
             android:src="@drawable/books"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnUserInfo" />
 
@@ -35,100 +33,138 @@
             android:layout_width="204dp"
             android:layout_height="57dp"
             android:layout_marginStart="150dp"
-            android:layout_marginTop="128dp"
+            android:layout_marginTop="120dp"
             android:layout_marginEnd="150dp"
-            android:text="user info"
+            android:text="add info"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintHorizontal_bias="0.43"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/edtxtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="31dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="63dp"
             android:ems="10"
-            android:enabled="false"
             android:inputType="textPersonName"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintStart_toEndOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="62dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="35dp"
             android:text="Name:"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@+id/edtxtName"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="38dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="40dp"
             android:text="Address:"
             android:textSize="16sp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/edtxtAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="63dp"
             android:ems="10"
-            android:enabled="false"
             android:inputType="textPersonName"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintHorizontal_bias="0.73"
+            app:layout_constraintStart_toEndOf="@+id/tvAddress"
+            app:layout_constraintTop_toBottomOf="@+id/edtxtName"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/edtxtPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="63dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="80dp"
             android:ems="10"
-            android:enabled="false"
             android:inputType="textPersonName"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.933"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintHorizontal_bias="0.888"
+            app:layout_constraintStart_toEndOf="@+id/tvPhone"
+            app:layout_constraintTop_toBottomOf="@+id/edtxtAddress"
+            app:layout_constraintVertical_bias="0.036"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/tvPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="38dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="45dp"
             android:text="Phone:"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName3"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="70dp"
+            android:text="Update"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnReset"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtxtPhone"
+            app:layout_constraintVertical_bias="0.363"
+            android:onClick="onClickRetrieveUsers"/>
+
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="106dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="70dp"
+            android:text="Reset"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnUpdate"
+            app:layout_constraintTop_toBottomOf="@+id/edtxtPhone"
+            app:layout_constraintVertical_bias="0.363" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </ScrollView>
+</ScrollView>
 
