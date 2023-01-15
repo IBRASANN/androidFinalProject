@@ -1,4 +1,4 @@
-package com.example.finalproject.ui
+package com.example.finalproject
 
 import android.content.*
 import android.database.Cursor
@@ -8,13 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 import android.net.Uri
 import android.text.TextUtils
-import java.lang.IllegalArgumentException
-import java.util.HashMap
 
 
 class UsersProvider : ContentProvider(){
     companion object {
-        val PROVIDER_NAME = "com.example.finalproject.ui.UsersProvider"
+        val PROVIDER_NAME = "com.example.finalproject.UsersProvider"
         val URL = "content://" + PROVIDER_NAME + "/users"
         val CONTENT_URI = Uri.parse(URL)
         val _ID = "_id"
@@ -22,22 +20,22 @@ class UsersProvider : ContentProvider(){
         val ADDRESS = "address"
         val PHONE = "phone"
         val PASSWORD = "password"
-        private val STUDENTS_PROJECTION_MAP: HashMap<String, String>? = null
+        private val USERS_PROJECTION_MAP: HashMap<String, String>? = null
         val USERS = 1
         val USER_ID = 2
         val uriMatcher: UriMatcher? = null
         val DATABASE_NAME = "application"
         val USERS_TABLE_NAME = "users"
         val DATABASE_VERSION = 1
-        val CREATE_DB_TABLE = " CREATE TABLE " + USERS_TABLE_NAME +        " (_id INTEGER PRIMARY KEY AUTOINCREMENT, " + " name TEXT NOT NULL, " +
-                " address TEXT NOT NULL, " + " phone INT NOT NULL, " + " password TEXT NOT NULL);"
+        val CREATE_DB_TABLE = "CREATE TABLE " + USERS_TABLE_NAME +        " (_id INTEGER PRIMARY KEY AUTOINCREMENT," + " name TEXT NOT NULL," +
+                " address TEXT NOT NULL," + " phone TEXT NOT NULL," + " password TEXT NOT NULL);"
 
 
     private var sUriMatcher = UriMatcher(UriMatcher.NO_MATCH);
     init
     {
-        sUriMatcher.addURI(PROVIDER_NAME, "students", USERS);
-        sUriMatcher.addURI(PROVIDER_NAME, "students/#", USER_ID);
+        sUriMatcher.addURI(PROVIDER_NAME, "users", USERS);
+        sUriMatcher.addURI(PROVIDER_NAME, "users/#", USER_ID);
     }
 }
 
@@ -67,7 +65,7 @@ private class DatabaseHelper internal constructor(context: Context?) :
     return if (db == null) false else true
 }
 
-    override fun insert(uri: Uri, values: ContentValues?): Uri? {
+    override fun insert(uri: Uri, values: ContentValues?): Uri {
     /**
      * Add a new student record
      */
@@ -90,14 +88,14 @@ private class DatabaseHelper internal constructor(context: Context?) :
     var sortOrder = sortOrder
     val qb = SQLiteQueryBuilder()
     qb.tables = USERS_TABLE_NAME
-    when (uriMatcher!!.match(uri)) {
+    /*when (uriMatcher!!.match(uri)) {
             USER_ID -> qb.appendWhere(_ID + "=" + uri.pathSegments[1])
         else -> { null
         }
-    }
+    }*/
     if (sortOrder == null || sortOrder === "") {
         /*** By default sort on student names*/
-        sortOrder = NAME
+        sortOrder = _ID
     }
     val c = qb.query(db, projection, selection, selectionArgs, null, null, sortOrder)
     /**
@@ -108,7 +106,7 @@ private class DatabaseHelper internal constructor(context: Context?) :
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
     var count = 0
-    when (uriMatcher!!.match(uri)) {
+    /*when (uriMatcher!!.match(uri)) {
         USERS -> count = db!!.delete(
             USERS_TABLE_NAME, selection,
             selectionArgs
@@ -123,7 +121,11 @@ private class DatabaseHelper internal constructor(context: Context?) :
             )
         }
         else -> throw IllegalArgumentException("Unknown URI $uri")
-    }
+    }*/
+        count = db!!.delete(
+            USERS_TABLE_NAME, selection,
+            selectionArgs
+        )
     context!!.contentResolver.notifyChange(uri, null)
     return count
 }
@@ -135,7 +137,8 @@ private class DatabaseHelper internal constructor(context: Context?) :
     selectionArgs: Array<String>?
 ): Int {
     var count = 0
-    when (uriMatcher!!.match(uri)) {
+        /*
+   when (uriMatcher!!.match(uri)) {
         USERS -> count = db!!.update(
             USERS_TABLE_NAME, values, selection,
             selectionArgs
@@ -147,12 +150,15 @@ private class DatabaseHelper internal constructor(context: Context?) :
             selectionArgs
         )
         else -> throw IllegalArgumentException("Unknown URI $uri")
-    }
+    }*/
+        count = db!!.update(
+            USERS_TABLE_NAME, values, selection,
+            selectionArgs)
     context!!.contentResolver.notifyChange(uri, null)
     return count
 }
 
-    override fun getType(uri: Uri): String? {
+    override fun getType(uri: Uri): String {
         when (uriMatcher!!.match(uri)) {
             USERS -> return "vnd.android.cursor.dir/vnd.example.users"
             USER_ID -> return "vnd.android.cursor.item/vnd.example.users"

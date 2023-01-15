@@ -17,14 +17,14 @@ class MusicPlayer :Service(){
 
         // starting the process
         player.start()
-        Toast.makeText(applicationContext,"service on",Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext,"music on",Toast.LENGTH_SHORT).show()
         // returns the status of the program
         return START_STICKY
     }
 
     // execution of the service will stop on calling this method
     override fun onDestroy() {
-        Toast.makeText(applicationContext,"service off",Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext,"music off",Toast.LENGTH_SHORT).show()
         player.stop()
         super.onDestroy()
 
